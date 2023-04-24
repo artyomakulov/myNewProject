@@ -174,6 +174,6 @@ const styles = StyleSheet.create({
   LoginRefTitle: {
     color: "#1B4371",
     fontSize: 16,
-    fontStyle: "Roboto",
+    fontFamily: "Roboto",
   },
 });
