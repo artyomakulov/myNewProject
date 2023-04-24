@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+
 import {
   Button,
   Keyboard,
@@ -26,6 +27,7 @@ export default function App() {
     console.log("state", state);
     setState(initialState);
   };
+
   return (
     <TouchableWithoutFeedback onPress={keybordHide}>
       <View style={styles.container}>
