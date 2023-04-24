@@ -48,6 +48,7 @@ export default function RegistrationScreen() {
                   style={styles.input}
                   placeholder="Логин"
                   onFocus={() => setIsShowKeyboard(true)}
+                  onBlur={() => setIsShowKeyboard(false)}
                   value={state.login}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, login: value }))
@@ -60,6 +61,7 @@ export default function RegistrationScreen() {
                   style={styles.input}
                   placeholder="Адрес электронной почты"
                   onFocus={() => setIsShowKeyboard(true)}
+                  onBlur={() => setIsShowKeyboard(false)}
                   value={state.email}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, email: value }))
@@ -74,6 +76,7 @@ export default function RegistrationScreen() {
                   secureTextEntry={true}
                   value={state.password}
                   onFocus={() => setIsShowKeyboard(true)}
+                  onBlur={() => setIsShowKeyboard(false)}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, password: value }))
                   }
