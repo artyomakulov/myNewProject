@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState, useSyncExternalStore } from "react";
 
 import {
+  Image,
   Keyboard,
   Platform,
   TextInput,
@@ -55,8 +56,11 @@ export default function RegistrationScreen() {
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
         >
-          <View>
-            <Text>Картинка </Text>
+          <View style={styles.avatarContainer}>
+            <Image
+              style={styles.avatar}
+              source={require("../assets/images/avatar.jpg")}
+            />
           </View>
           <View
             style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
@@ -147,8 +151,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   text: {
     fontSize: 20,
@@ -219,5 +221,19 @@ const styles = StyleSheet.create({
     color: "#1B4371",
     fontSize: 16,
     fontFamily: "Roboto",
+  },
+  avatarContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    position: "absolute",
+    left: 128,
+    top: 203,
+  },
+  avatar: {
+    height: 120,
+    width: 120,
+    borderRadius: 16,
+
   },
 });
