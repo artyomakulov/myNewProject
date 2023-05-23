@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 import {
   Keyboard,
@@ -19,13 +19,33 @@ const initialState = {
 export default function RegistrationScreen() {
   console.log(Platform.OS);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [inputStates, setInputStates] = useState({
+    login: false,
+    email: false,
+    password: false,
+  });
   const [state, setState] = useState(initialState);
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-    // console.log("state", state);
     setState(initialState);
+  };
+
+  const handleInputFocus = (inputName) => {
+    setIsShowKeyboard(true);
+    setInputStates((prevState) => ({
+      ...prevState,
+      [inputName]: true,
+    }));
+  };
+
+  const handleInputBlur = (inputName) => {
+    setIsShowKeyboard(false);
+    setInputStates((prevState) => ({
+      ...prevState,
+      [inputName]: false,
+    }));
   };
 
   return (
@@ -35,6 +55,9 @@ export default function RegistrationScreen() {
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
         >
+          <View>
+            <Text>Картинка </Text>
+          </View>
           <View
             style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
           >
@@ -43,12 +66,18 @@ export default function RegistrationScreen() {
                 <Text style={styles.headerTitle}>Регистрация </Text>
               </View>
               <View>
-                {/* <Text style={styles.inputTitle}>Логин</Text> */}
                 <TextInput
-                  style={styles.input}
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor: inputStates.login
+                        ? "white"
+                        : styles.input.backgroundColor,
+                    },
+                  ]}
                   placeholder="Логин"
-                  onFocus={() => setIsShowKeyboard(true)}
-                  onBlur={() => setIsShowKeyboard(false)}
+                  onFocus={() => handleInputFocus("login")}
+                  onBlur={() => handleInputBlur("login")}
                   value={state.login}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, login: value }))
@@ -56,12 +85,18 @@ export default function RegistrationScreen() {
                 />
               </View>
               <View>
-                {/* <Text style={styles.inputTitle}>Адрес электронной почты</Text> */}
                 <TextInput
-                  style={styles.input}
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor: inputStates.email
+                        ? "white"
+                        : styles.input.backgroundColor,
+                    },
+                  ]}
                   placeholder="Адрес электронной почты"
-                  onFocus={() => setIsShowKeyboard(true)}
-                  onBlur={() => setIsShowKeyboard(false)}
+                  onFocus={() => handleInputFocus("email")}
+                  onBlur={() => handleInputBlur("email")}
                   value={state.email}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, email: value }))
@@ -69,14 +104,20 @@ export default function RegistrationScreen() {
                 />
               </View>
               <View>
-                {/* <Text style={styles.inputTitle}>Пароль</Text> */}
                 <TextInput
-                  style={styles.input}
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor: inputStates.password
+                        ? "white"
+                        : styles.input.backgroundColor,
+                    },
+                  ]}
                   placeholder="Пароль"
                   secureTextEntry={true}
                   value={state.password}
-                  onFocus={() => setIsShowKeyboard(true)}
-                  onBlur={() => setIsShowKeyboard(false)}
+                  onFocus={() => handleInputFocus("password")}
+                  onBlur={() => handleInputBlur("password")}
                   onChangeText={(value) =>
                     setState((prevState) => ({ ...prevState, password: value }))
                   }
