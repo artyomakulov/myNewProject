@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState, useSyncExternalStore } from "react";
 
 import {
+  Button,
   Image,
   Keyboard,
   Platform,
@@ -30,6 +31,7 @@ export default function RegistrationScreen() {
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
+    console.log('state', state)
     setState(initialState);
   };
 
@@ -68,10 +70,16 @@ export default function RegistrationScreen() {
                 style={styles.avatar}
                 source={require("../assets/images/avatar.jpg")}
               />
+              <TouchableOpacity>
+                  <Image
+                    style={styles.avatarButton}
+                    source={require("../assets/images/add.jpg")}
+                  />
+              </TouchableOpacity>
             </View>
             <View>
               <View style={styles.header}>
-                <Text style={styles.headerTitle}>Регистрация </Text>
+                <Text style={styles.headerTitle}>Реєстрація </Text>
               </View>
               <View>
                 <TextInput
@@ -91,7 +99,7 @@ export default function RegistrationScreen() {
                       color: getInputTextColor(state.login),
                     },
                   ]}
-                  placeholder="Логин"
+                  placeholder="Логін"
                   onFocus={() => handleInputFocus("login")}
                   onBlur={() => handleInputBlur("login")}
                   value={state.login}
@@ -118,7 +126,7 @@ export default function RegistrationScreen() {
                       color: getInputTextColor(state.email),
                     },
                   ]}
-                  placeholder="Адрес электронной почты"
+                  placeholder="Адреса електронної пошти"
                   onFocus={() => handleInputFocus("email")}
                   onBlur={() => handleInputBlur("email")}
                   value={state.email}
@@ -160,11 +168,11 @@ export default function RegistrationScreen() {
                 style={styles.btn}
                 onPress={keyboardHide}
               >
-                <Text style={styles.btnTitle}>Зарегестрироваться</Text>
+                <Text style={styles.btnTitle}>Зарєструватись</Text>
               </TouchableOpacity>
               <View style={styles.LoginRef}>
                 <Text style={styles.LoginRefTitle}>
-                  Уже есть аккаунт? Войти
+                Вже є акаунт? Увійти
                 </Text>
               </View>
             </View>
@@ -260,5 +268,13 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     borderRadius: 16,
+  },
+  avatarButton: {
+    bottom: 40,
+    left: 60,
+    width: 25,
+    height: 25,
+    backgroundColor: "white",
+    borderRadius: 15,
   },
 });
