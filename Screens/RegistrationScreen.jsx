@@ -78,6 +78,11 @@ export default function RegistrationScreen() {
                         ? "white"
                         : styles.input.backgroundColor,
                     },
+                    {
+                      borderColor: inputStates.login
+                        ? "#FF6C00"
+                        : styles.input.borderColor,
+                    },
                   ]}
                   placeholder="Логин"
                   onFocus={() => handleInputFocus("login")}
@@ -97,6 +102,11 @@ export default function RegistrationScreen() {
                         ? "white"
                         : styles.input.backgroundColor,
                     },
+                    {
+                      borderColor: inputStates.email
+                        ? "#FF6C00"
+                        : styles.input.borderColor,
+                    },
                   ]}
                   placeholder="Адрес электронной почты"
                   onFocus={() => handleInputFocus("email")}
@@ -115,6 +125,11 @@ export default function RegistrationScreen() {
                       backgroundColor: inputStates.password
                         ? "white"
                         : styles.input.backgroundColor,
+                    },
+                    {
+                      borderColor: inputStates.password
+                        ? "#FF6C00"
+                        : styles.input.borderColor,
                     },
                   ]}
                   placeholder="Пароль"
@@ -234,6 +249,5 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     borderRadius: 16,
-
   },
 });
