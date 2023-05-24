@@ -56,15 +56,15 @@ export default function RegistrationScreen() {
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
         >
-          <View style={styles.avatarContainer}>
-            <Image
-              style={styles.avatar}
-              source={require("../assets/images/avatar.jpg")}
-            />
-          </View>
           <View
             style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
           >
+            <View style={styles.avatarContainer}>
+              <Image
+                style={styles.avatar}
+                source={require("../assets/images/avatar.jpg")}
+              />
+            </View>
             <View>
               <View style={styles.header}>
                 <Text style={styles.headerTitle}>Регистрация </Text>
@@ -241,9 +241,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    position: "absolute",
-    left: 128,
-    top: 203,
+    transform: [{ translateY: 60 }]
   },
   avatar: {
     height: 120,
