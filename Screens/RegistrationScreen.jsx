@@ -49,6 +49,10 @@ export default function RegistrationScreen() {
     }));
   };
 
+  const getInputTextColor = (inputValue) => {
+    return inputValue ? "black" : "#BDBDBD";
+  };
+
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
@@ -83,6 +87,9 @@ export default function RegistrationScreen() {
                         ? "#FF6C00"
                         : styles.input.borderColor,
                     },
+                    {
+                      color: getInputTextColor(state.login),
+                    },
                   ]}
                   placeholder="Логин"
                   onFocus={() => handleInputFocus("login")}
@@ -107,6 +114,9 @@ export default function RegistrationScreen() {
                         ? "#FF6C00"
                         : styles.input.borderColor,
                     },
+                    {
+                      color: getInputTextColor(state.email),
+                    },
                   ]}
                   placeholder="Адрес электронной почты"
                   onFocus={() => handleInputFocus("email")}
@@ -130,6 +140,9 @@ export default function RegistrationScreen() {
                       borderColor: inputStates.password
                         ? "#FF6C00"
                         : styles.input.borderColor,
+                    },
+                    {
+                      color: getInputTextColor(state.password),
                     },
                   ]}
                   placeholder="Пароль"
@@ -241,7 +254,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    transform: [{ translateY: 60 }]
+    transform: [{ translateY: 60 }],
   },
   avatar: {
     height: 120,
