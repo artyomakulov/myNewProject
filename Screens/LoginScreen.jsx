@@ -63,7 +63,7 @@ export default function LoginScreen() {
           source={require("../assets/images/PhotoBG.jpg")}
         >
           <View
-            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -250 }}
+            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -230 }}
           >
             <View>
               <View style={styles.header}>
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   },
   RegistrationRef: {
     alignItems: "center",
-    marginBottom: 144,
+    marginBottom: 132,
   },
   RegistrationRefTitle: {
     color: "#1B4371",
