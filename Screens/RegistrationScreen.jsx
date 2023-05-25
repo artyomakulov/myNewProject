@@ -27,11 +27,12 @@ export default function RegistrationScreen() {
     password: false,
   });
   const [state, setState] = useState(initialState);
+  const [showPassword, setShowPassword] = useState(false);
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-    console.log('state', state)
+    console.log("state", state);
     setState(initialState);
   };
 
@@ -71,10 +72,10 @@ export default function RegistrationScreen() {
                 source={require("../assets/images/avatar.jpg")}
               />
               <TouchableOpacity>
-                  <Image
-                    style={styles.avatarButton}
-                    source={require("../assets/images/add.jpg")}
-                  />
+                <Image
+                  style={styles.avatarButton}
+                  source={require("../assets/images/add.jpg")}
+                />
               </TouchableOpacity>
             </View>
             <View>
@@ -162,6 +163,14 @@ export default function RegistrationScreen() {
                     setState((prevState) => ({ ...prevState, password: value }))
                   }
                 />
+                <TouchableOpacity
+                  style={styles.showPasswordButton}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
+                  <Text style={styles.showPasswordButtonText}>
+                    {showPassword ? "Скрити" : "Показати"}
+                  </Text>
+                </TouchableOpacity>
               </View>
               <TouchableOpacity
                 activeOpacity={0.6}
@@ -171,9 +180,7 @@ export default function RegistrationScreen() {
                 <Text style={styles.btnTitle}>Зарєструватись</Text>
               </TouchableOpacity>
               <View style={styles.LoginRef}>
-                <Text style={styles.LoginRefTitle}>
-                Вже є акаунт? Увійти
-                </Text>
+                <Text style={styles.LoginRefTitle}>Вже є акаунт? Увійти</Text>
               </View>
             </View>
           </View>
@@ -201,17 +208,16 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "contain",
     justifyContent: "flex-end",
-    // alignItems: "center",
   },
   input: {
     borderWidth: 1,
     borderColor: "#E8E8E8",
-    marginHorizontal: 15,
-    marginTop: 15,
+    marginHorizontal: 16,
+    marginTop: 16,
     borderRadius: 8,
     height: 50,
     color: "#BDBDBD",
-    paddingLeft: 15,
+    paddingLeft: 16,
     fontSize: 16,
     backgroundColor: "#F6F6F6",
   },
@@ -219,21 +225,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: "white",
-    // position: "absolute",
   },
-  // inputTitle: {
-  //   color: "white",
-  //   fontSize: 18,
-  // },
   btn: {
     backgroundColor: `#FF6C00`,
     height: 50,
     borderRadius: 30,
-    marginTop: 40,
+    marginTop: 23,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 15,
-    marginBottom: 15,
+    marginHorizontal: 16,
+    marginBottom: 16,
   },
   btnTitle: {
     color: "white",
@@ -276,5 +277,13 @@ const styles = StyleSheet.create({
     height: 25,
     backgroundColor: "white",
     borderRadius: 15,
+  },
+  showPasswordButton: {
+    alignSelf: "flex-end",
+  },
+  showPasswordButtonText: {
+    color: "#FF6C00",
+    bottom: 35,
+    right: 32,
   },
 });

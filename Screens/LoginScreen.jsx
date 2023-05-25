@@ -26,6 +26,7 @@ export default function LoginScreen() {
     password: false,
   });
   const [state, setState] = useState(initialState);
+  const [showPassword, setShowPassword] = useState(false);
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
@@ -62,7 +63,7 @@ export default function LoginScreen() {
           source={require("../assets/images/PhotoBG.jpg")}
         >
           <View
-            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -240 }}
+            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -250 }}
           >
             <View>
               <View style={styles.header}>
@@ -114,7 +115,7 @@ export default function LoginScreen() {
                     },
                   ]}
                   placeholder="Пароль"
-                  secureTextEntry={true}
+                  secureTextEntry={!showPassword}
                   value={state.password}
                   onFocus={() => handleInputFocus("password")}
                   onBlur={() => handleInputBlur("password")}
@@ -122,6 +123,14 @@ export default function LoginScreen() {
                     setState((prevState) => ({ ...prevState, password: value }))
                   }
                 />
+                <TouchableOpacity
+                  style={styles.showPasswordButton}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
+                  <Text style={styles.showPasswordButtonText}>
+                    {showPassword ? "Скрити" : "Показати"}
+                  </Text>
+                </TouchableOpacity>
               </View>
               <TouchableOpacity
                 activeOpacity={0.6}
@@ -151,27 +160,20 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
-  //   innerBox: {
-  //     padding: 50,
-  //     borderWidth: 1,
-  //     borderColor: "white",
-  //     borderRadius: 50,
-  //   },
   image: {
     flex: 1,
     resizeMode: "contain",
     justifyContent: "flex-end",
-    // alignItems: "center",
   },
   input: {
     borderWidth: 1,
     borderColor: "#E8E8E8",
-    marginHorizontal: 15,
-    marginTop: 15,
+    marginHorizontal: 16,
+    marginTop: 16,
     borderRadius: 8,
     height: 50,
     color: "#BDBDBD",
-    paddingLeft: 15,
+    paddingLeft: 16,
     fontSize: 16,
     backgroundColor: "#F6F6F6",
   },
@@ -179,21 +181,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: "white",
-    // position: "absolute",
   },
-  // inputTitle: {
-  //   color: "white",
-  //   fontSize: 18,
-  // },
   btn: {
     backgroundColor: `#FF6C00`,
     height: 50,
     borderRadius: 30,
-    marginTop: 40,
+    marginTop: 23,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 15,
-    marginBottom: 15,
+    marginHorizontal: 16,
+    marginBottom: 16,
   },
   btnTitle: {
     color: "white",
@@ -236,5 +233,13 @@ const styles = StyleSheet.create({
     height: 25,
     backgroundColor: "white",
     borderRadius: 15,
+  },
+  showPasswordButton: {
+    alignSelf: "flex-end",
+  },
+  showPasswordButtonText: {
+    color: "#FF6C00",
+    bottom: 35,
+    right: 32,
   },
 });
