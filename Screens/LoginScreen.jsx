@@ -58,95 +58,94 @@ export default function LoginScreen() {
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
-        <ImageBackground
+        <Image
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
+        />
+        <View
+          style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -230 }}
         >
-          <View
-            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -230 }}
-          >
+          <View>
+            <View style={styles.header}>
+              <Text style={styles.headerTitle}>Увійти </Text>
+            </View>
             <View>
-              <View style={styles.header}>
-                <Text style={styles.headerTitle}>Увійти </Text>
-              </View>
-              <View>
-                <TextInput
-                  style={[
-                    styles.input,
-                    {
-                      backgroundColor: inputStates.email
-                        ? "white"
-                        : styles.input.backgroundColor,
-                    },
-                    {
-                      borderColor: inputStates.email
-                        ? "#FF6C00"
-                        : styles.input.borderColor,
-                    },
-                    {
-                      color: getInputTextColor(state.email),
-                    },
-                  ]}
-                  placeholder="Адреса електронної пошти"
-                  onFocus={() => handleInputFocus("email")}
-                  onBlur={() => handleInputBlur("email")}
-                  value={state.email}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, email: value }))
-                  }
-                />
-              </View>
-              <View>
-                <TextInput
-                  style={[
-                    styles.input,
-                    {
-                      backgroundColor: inputStates.password
-                        ? "white"
-                        : styles.input.backgroundColor,
-                    },
-                    {
-                      borderColor: inputStates.password
-                        ? "#FF6C00"
-                        : styles.input.borderColor,
-                    },
-                    {
-                      color: getInputTextColor(state.password),
-                    },
-                  ]}
-                  placeholder="Пароль"
-                  secureTextEntry={!showPassword}
-                  value={state.password}
-                  onFocus={() => handleInputFocus("password")}
-                  onBlur={() => handleInputBlur("password")}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, password: value }))
-                  }
-                />
-                <TouchableOpacity
-                  style={styles.showPasswordButton}
-                  onPress={() => setShowPassword(!showPassword)}
-                >
-                  <Text style={styles.showPasswordButtonText}>
-                    {showPassword ? "Скрити" : "Показати"}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: inputStates.email
+                      ? "white"
+                      : styles.input.backgroundColor,
+                  },
+                  {
+                    borderColor: inputStates.email
+                      ? "#FF6C00"
+                      : styles.input.borderColor,
+                  },
+                  {
+                    color: getInputTextColor(state.email),
+                  },
+                ]}
+                placeholder="Адреса електронної пошти"
+                onFocus={() => handleInputFocus("email")}
+                onBlur={() => handleInputBlur("email")}
+                value={state.email}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, email: value }))
+                }
+              />
+            </View>
+            <View>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: inputStates.password
+                      ? "white"
+                      : styles.input.backgroundColor,
+                  },
+                  {
+                    borderColor: inputStates.password
+                      ? "#FF6C00"
+                      : styles.input.borderColor,
+                  },
+                  {
+                    color: getInputTextColor(state.password),
+                  },
+                ]}
+                placeholder="Пароль"
+                secureTextEntry={!showPassword}
+                value={state.password}
+                onFocus={() => handleInputFocus("password")}
+                onBlur={() => handleInputBlur("password")}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, password: value }))
+                }
+              />
               <TouchableOpacity
-                activeOpacity={0.6}
-                style={styles.btn}
-                onPress={keyboardHide}
+                style={styles.showPasswordButton}
+                onPress={() => setShowPassword(!showPassword)}
               >
-                <Text style={styles.btnTitle}>Увійти</Text>
-              </TouchableOpacity>
-              <View style={styles.RegistrationRef}>
-                <Text style={styles.RegistrationRefTitle}>
-                  Немає акаунту? Зареєструватися
+                <Text style={styles.showPasswordButtonText}>
+                  {showPassword ? "Скрити" : "Показати"}
                 </Text>
-              </View>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={styles.btn}
+              onPress={keyboardHide}
+            >
+              <Text style={styles.btnTitle}>Увійти</Text>
+            </TouchableOpacity>
+            <View style={styles.RegistrationRef}>
+              <Text style={styles.RegistrationRefTitle}>
+                Немає акаунту? Зареєструватися
+              </Text>
             </View>
           </View>
-        </ImageBackground>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -155,6 +154,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "flex-end",
     backgroundColor: "#fff",
   },
   text: {
@@ -162,8 +162,13 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: "contain",
-    justifyContent: "flex-end",
+    resizeMode: "cover",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: "100%",
   },
   input: {
     borderWidth: 1,
@@ -238,7 +243,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   showPasswordButtonText: {
-    color: "#FF6C00",
+    color: "#1B4371",
     bottom: 35,
     right: 32,
   },
