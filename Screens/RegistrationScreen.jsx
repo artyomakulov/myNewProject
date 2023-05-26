@@ -59,10 +59,10 @@ export default function RegistrationScreen() {
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
-        <ImageBackground
+        <Image
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
-        >
+        />
           <View
             style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
           >
@@ -184,7 +184,6 @@ export default function RegistrationScreen() {
               </View>
             </View>
           </View>
-        </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -193,6 +192,7 @@ export default function RegistrationScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "flex-end",
     backgroundColor: "#fff",
   },
   text: {
@@ -206,8 +206,13 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: "contain",
-    justifyContent: "flex-end",
+    resizeMode: "cover",
+    position: 'absolute',
+    top: 0,
+    left:0,
+    right: 0,
+    bottom: 0,
+    width: "100%",
   },
   input: {
     borderWidth: 1,
@@ -282,7 +287,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   showPasswordButtonText: {
-    color: "#FF6C00",
+    color: "#1B4371",
     bottom: 35,
     right: 32,
   },
