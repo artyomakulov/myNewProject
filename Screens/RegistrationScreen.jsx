@@ -1,8 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { useState, useSyncExternalStore } from "react";
+
+import { useState } from "react";
 
 import {
-  Button,
   Image,
   Keyboard,
   Platform,
@@ -10,7 +9,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, Text, View } from "react-native";
 
 const initialState = {
   login: "",
@@ -57,7 +56,7 @@ export default function RegistrationScreen() {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={keyboardHide}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Image
           style={styles.image}
