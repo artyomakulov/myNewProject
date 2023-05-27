@@ -1,7 +1,8 @@
-
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
 import {
+  Button,
   Image,
   Keyboard,
   Platform,
@@ -9,7 +10,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import {  StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const initialState = {
   login: "",
@@ -18,6 +19,7 @@ const initialState = {
 };
 
 export default function RegistrationScreen() {
+  const navigation = useNavigation();
   console.log(Platform.OS);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [inputStates, setInputStates] = useState({
@@ -62,127 +64,129 @@ export default function RegistrationScreen() {
           style={styles.image}
           source={require("../assets/images/PhotoBG.jpg")}
         />
-          <View
-            style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
-          >
-            <View style={styles.avatarContainer}>
+        <View
+          style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
+        >
+          <View style={styles.avatarContainer}>
+            <Image
+              style={styles.avatar}
+              source={require("../assets/images/avatar.jpg")}
+            />
+            <TouchableOpacity>
               <Image
-                style={styles.avatar}
-                source={require("../assets/images/avatar.jpg")}
+                style={styles.avatarButton}
+                source={require("../assets/images/add.jpg")}
               />
-              <TouchableOpacity>
-                <Image
-                  style={styles.avatarButton}
-                  source={require("../assets/images/add.jpg")}
-                />
-              </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <View style={styles.header}>
+              <Text style={styles.headerTitle}>Реєстрація </Text>
             </View>
             <View>
-              <View style={styles.header}>
-                <Text style={styles.headerTitle}>Реєстрація </Text>
-              </View>
-              <View>
-                <TextInput
-                  style={[
-                    styles.input,
-                    {
-                      backgroundColor: inputStates.login
-                        ? "white"
-                        : styles.input.backgroundColor,
-                    },
-                    {
-                      borderColor: inputStates.login
-                        ? "#FF6C00"
-                        : styles.input.borderColor,
-                    },
-                    {
-                      color: getInputTextColor(state.login),
-                    },
-                  ]}
-                  placeholder="Логін"
-                  onFocus={() => handleInputFocus("login")}
-                  onBlur={() => handleInputBlur("login")}
-                  value={state.login}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, login: value }))
-                  }
-                />
-              </View>
-              <View>
-                <TextInput
-                  style={[
-                    styles.input,
-                    {
-                      backgroundColor: inputStates.email
-                        ? "white"
-                        : styles.input.backgroundColor,
-                    },
-                    {
-                      borderColor: inputStates.email
-                        ? "#FF6C00"
-                        : styles.input.borderColor,
-                    },
-                    {
-                      color: getInputTextColor(state.email),
-                    },
-                  ]}
-                  placeholder="Адреса електронної пошти"
-                  onFocus={() => handleInputFocus("email")}
-                  onBlur={() => handleInputBlur("email")}
-                  value={state.email}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, email: value }))
-                  }
-                />
-              </View>
-              <View>
-                <TextInput
-                  style={[
-                    styles.input,
-                    {
-                      backgroundColor: inputStates.password
-                        ? "white"
-                        : styles.input.backgroundColor,
-                    },
-                    {
-                      borderColor: inputStates.password
-                        ? "#FF6C00"
-                        : styles.input.borderColor,
-                    },
-                    {
-                      color: getInputTextColor(state.password),
-                    },
-                  ]}
-                  placeholder="Пароль"
-                  secureTextEntry={true}
-                  value={state.password}
-                  onFocus={() => handleInputFocus("password")}
-                  onBlur={() => handleInputBlur("password")}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, password: value }))
-                  }
-                />
-                <TouchableOpacity
-                  style={styles.showPasswordButton}
-                  onPress={() => setShowPassword(!showPassword)}
-                >
-                  <Text style={styles.showPasswordButtonText}>
-                    {showPassword ? "Скрити" : "Показати"}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: inputStates.login
+                      ? "white"
+                      : styles.input.backgroundColor,
+                  },
+                  {
+                    borderColor: inputStates.login
+                      ? "#FF6C00"
+                      : styles.input.borderColor,
+                  },
+                  {
+                    color: getInputTextColor(state.login),
+                  },
+                ]}
+                placeholder="Логін"
+                onFocus={() => handleInputFocus("login")}
+                onBlur={() => handleInputBlur("login")}
+                value={state.login}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, login: value }))
+                }
+              />
+            </View>
+            <View>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: inputStates.email
+                      ? "white"
+                      : styles.input.backgroundColor,
+                  },
+                  {
+                    borderColor: inputStates.email
+                      ? "#FF6C00"
+                      : styles.input.borderColor,
+                  },
+                  {
+                    color: getInputTextColor(state.email),
+                  },
+                ]}
+                placeholder="Адреса електронної пошти"
+                onFocus={() => handleInputFocus("email")}
+                onBlur={() => handleInputBlur("email")}
+                value={state.email}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, email: value }))
+                }
+              />
+            </View>
+            <View>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: inputStates.password
+                      ? "white"
+                      : styles.input.backgroundColor,
+                  },
+                  {
+                    borderColor: inputStates.password
+                      ? "#FF6C00"
+                      : styles.input.borderColor,
+                  },
+                  {
+                    color: getInputTextColor(state.password),
+                  },
+                ]}
+                placeholder="Пароль"
+                secureTextEntry={true}
+                value={state.password}
+                onFocus={() => handleInputFocus("password")}
+                onBlur={() => handleInputBlur("password")}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, password: value }))
+                }
+              />
               <TouchableOpacity
-                activeOpacity={0.6}
-                style={styles.btn}
-                onPress={keyboardHide}
+                style={styles.showPasswordButton}
+                onPress={() => setShowPassword(!showPassword)}
               >
-                <Text style={styles.btnTitle}>Зарєструватись</Text>
+                <Text style={styles.showPasswordButtonText}>
+                  {showPassword ? "Скрити" : "Показати"}
+                </Text>
               </TouchableOpacity>
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={styles.btn}
+              onPress={keyboardHide}
+            >
+              <Text style={styles.btnTitle}>Зарєструватись</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <View style={styles.LoginRef}>
                 <Text style={styles.LoginRefTitle}>Вже є акаунт? Увійти</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -206,9 +210,9 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "cover",
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    left:0,
+    left: 0,
     right: 0,
     bottom: 0,
     width: "100%",

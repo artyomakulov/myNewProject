@@ -1,6 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
 import {
+  Button,
   Image,
   Keyboard,
   Platform,
@@ -16,6 +18,7 @@ const initialState = {
 };
 
 export default function LoginScreen() {
+  const navigation = useNavigation();
   console.log(Platform.OS);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [inputStates, setInputStates] = useState({
@@ -137,11 +140,12 @@ export default function LoginScreen() {
             >
               <Text style={styles.btnTitle}>Увійти</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Registration")}>
             <View style={styles.RegistrationRef}>
-              <Text style={styles.RegistrationRefTitle}>
-                Немає акаунту? Зареєструватися
-              </Text>
+              <Text style={styles.RegistrationRefTitle}>Немає акаунту? Зареєструватися</Text>
             </View>
+            </TouchableOpacity>
+
           </View>
         </View>
       </View>
