@@ -4,33 +4,35 @@ import LoginScreen from "./Screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-const MainStack = createStackNavigator();
+const AuthStack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
-        <MainStack.Screen
+      <AuthStack.Navigator>
+        <AuthStack.Screen
           name="Registration"
           component={RegistrationScreen}
           options={{
+            headerShown: false,
             title: "Registration",
             headerStyle: {
               height: 0,
             },
           }}
         />
-        <MainStack.Screen
+        <AuthStack.Screen
           name="Login"
           component={LoginScreen}
           options={{
+            headerShown: false,
             title: "Login",
             headerStyle: {
               height: 0,
             },
           }}
         />
-      </MainStack.Navigator>
+      </AuthStack.Navigator>
     </NavigationContainer>
   );
 }
