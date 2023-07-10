@@ -156,7 +156,7 @@ export default function RegistrationScreen() {
                   },
                 ]}
                 placeholder="Пароль"
-                secureTextEntry={true}
+                secureTextEntry={!showPassword}
                 value={state.password}
                 onFocus={() => handleInputFocus("password")}
                 onBlur={() => handleInputBlur("password")}

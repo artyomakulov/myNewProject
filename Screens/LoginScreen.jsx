@@ -140,12 +140,15 @@ export default function LoginScreen() {
             >
               <Text style={styles.btnTitle}>Увійти</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Registration")}>
-            <View style={styles.RegistrationRef}>
-              <Text style={styles.RegistrationRefTitle}>Немає акаунту? Зареєструватися</Text>
-            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Registration")}
+            >
+              <View style={styles.RegistrationRef}>
+                <Text style={styles.RegistrationRefTitle}>
+                  Немає акаунту? Зареєструватися
+                </Text>
+              </View>
             </TouchableOpacity>
-
           </View>
         </View>
       </View>
