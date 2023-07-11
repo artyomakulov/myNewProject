@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-native";
+// import { Button, StyleSheet, TouchableOpacity } from "react-native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -11,7 +11,9 @@ import CreatePostScreen from "./Screens/mainScreen/CreatePostsScreen";
 import MapScreen from "./Screens/mainScreen/MapScreen";
 import ProfileScreen from "./Screens/mainScreen/ProfileScreen";
 // import CommentScreen from "./Screens/mainScreen/CommentsScreen";
+
 import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -46,19 +48,27 @@ export const useRoute = (isAuth) => {
     );
   }
   return (
-    <MainTab.Navigator>
+    <MainTab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "white",
+        tabBarActiveBackgroundColor: "#FF6C00",
+        // tabBarInactiveBackgroundColor: "white",
+        // tabBarInactiveTintColor:"grey",
+        headerTitleAlign: "center",
+      }}
+    >
       <MainTab.Screen
         options={{
+          title: "Публікації",
           headerRight: () => (
-            <Button
+            <Feather
               onPress={() => alert("This is a button!")}
-              title="Press me"
-              color="#FF6C00"
+              name="log-out"
+              size={28}
+              color="#BDBDBD"
             />
           ),
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: "white",
-          tabBarActiveBackgroundColor: "#FF6C00",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="grid-outline" size={size} color={color} />
           ),
@@ -68,32 +78,16 @@ export const useRoute = (isAuth) => {
       />
       <MainTab.Screen
         options={{
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: "white",
-          tabBarActiveBackgroundColor: "#FF6C00",
+          title: "Створити публікацію",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add" size={size} color={color} />
+              <Ionicons name="add" size={size} color={color} />
           ),
         }}
         name="CreatePostScreen"
         component={CreatePostScreen}
       />
-      {/* <MainTab.Screen
-        options={{
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: "orange",
-          tabBarIcon: ({  color, size }) => (
-            <Ionicons name="add-sharp" size={size} color={color} />
-          ),
-        }}
-        name="MapScreen"
-        component={MapScreen}
-      /> */}
       <MainTab.Screen
         options={{
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: "white",
-          tabBarActiveBackgroundColor: "#FF6C00",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-outline" size={size} color={color} />
           ),
@@ -101,17 +95,19 @@ export const useRoute = (isAuth) => {
         name="ProfileScreen"
         component={ProfileScreen}
       />
-      {/* <MainTab.Screen
-      options={{
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: "orange",
-        tabBarIcon: ({  color, size }) => (
-          <Ionicons name="add-sharp" size={size} color={color} />
-        ),
-      }}
-        name="CommentScreen"
-        component={CommentScreen}
-      /> */}
     </MainTab.Navigator>
   );
 };
+
+// const styles = StyleSheet.create({
+//   iconStyle: {
+//     alignItems: "center",
+//     position: "absolute",
+//     justifyContent: "center",
+//     width: 70,
+//     height: 40,
+//     color: "white",
+//     backgroundColor: "#FF6C00",
+//     borderRadius: 35,
+//   },
+// });
