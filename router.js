@@ -1,12 +1,12 @@
 import React from "react";
-// import { Button, StyleSheet, TouchableOpacity } from "react-native";
+import { Button, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RegistrationScreen from "./Screens/RegistrationScreen";
 import LoginScreen from "./Screens/LoginScreen";
-import Home from "./Screens/mainScreen/Home";
+// import Home from "./Screens/mainScreen/Home";
 import CreatePostScreen from "./Screens/mainScreen/CreatePostsScreen";
 import MapScreen from "./Screens/mainScreen/MapScreen";
 import ProfileScreen from "./Screens/mainScreen/ProfileScreen";
@@ -52,9 +52,7 @@ export const useRoute = (isAuth) => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: "white",
-        tabBarActiveBackgroundColor: "#FF6C00",
-        // tabBarInactiveBackgroundColor: "white",
-        // tabBarInactiveTintColor:"grey",
+        tabBarInactiveTintColor:"black",
         headerTitleAlign: "center",
       }}
     >
@@ -67,20 +65,41 @@ export const useRoute = (isAuth) => {
               name="log-out"
               size={28}
               color="#BDBDBD"
+              style={{ marginRight: 16 }}
             />
           ),
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid-outline" size={size} color={color} />
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name="grid-outline"
+              size={24}
+              color={color}
+              backgroundColor={focused ? "#FF6C00" : "transparent"}
+              style={{
+                paddingVertical: 13,
+                paddingHorizontal: 30,
+                borderRadius: 25,
+              }}
+            />
           ),
         }}
         name="Home"
-        component={Home}
+        component={MapScreen}
       />
       <MainTab.Screen
         options={{
           title: "Створити публікацію",
-          tabBarIcon: ({ color, size }) => (
-              <Ionicons name="add" size={size} color={color} />
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name="add"
+              size={24}
+              color={color}
+              backgroundColor={focused ? "#FF6C00" : "transparent"}
+              style={{
+                paddingVertical: 13,
+                paddingHorizontal: 30,
+                borderRadius: 25,
+              }}
+            />
           ),
         }}
         name="CreatePostScreen"
@@ -88,8 +107,18 @@ export const useRoute = (isAuth) => {
       />
       <MainTab.Screen
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
+          tabBarIcon: ({ focused, color, size }) => (
+              <Ionicons
+                name="person-outline"
+                size={24}
+                color={color}
+                backgroundColor={focused ? "#FF6C00" : "transparent"}
+                style={{
+                  paddingVertical: 13,
+                  paddingHorizontal: 30,
+                  borderRadius: 25,
+                }}
+              />
           ),
         }}
         name="ProfileScreen"
@@ -98,16 +127,3 @@ export const useRoute = (isAuth) => {
     </MainTab.Navigator>
   );
 };
-
-// const styles = StyleSheet.create({
-//   iconStyle: {
-//     alignItems: "center",
-//     position: "absolute",
-//     justifyContent: "center",
-//     width: 70,
-//     height: 40,
-//     color: "white",
-//     backgroundColor: "#FF6C00",
-//     borderRadius: 35,
-//   },
-// });
