@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import RegistrationScreen from "./Screens/authScreen/RegistrationScreen";
 import LoginScreen from "./Screens/authScreen/LoginScreen";
-// import Home from "./Screens/mainScreen/Home";
+import Home from "./Screens/mainScreen/Home";
 import CreatePostScreen from "./Screens/mainScreen/CreatePostsScreen";
 import MapScreen from "./Screens/mainScreen/MapScreen";
 import ProfileScreen from "./Screens/mainScreen/ProfileScreen";
@@ -84,8 +84,8 @@ export const useRoute = (isAuth) => {
             />
           ),
         }}
-        name="MapScreen"
-        component={MapScreen}
+        name="Home"
+        component={Home}
       />
       <MainTab.Screen
         options={{
