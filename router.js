@@ -14,9 +14,11 @@ import ProfileScreen from "./Screens/mainScreen/ProfileScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
+
 
 export const useRoute = (isAuth) => {
   if (!isAuth) {
@@ -58,9 +60,9 @@ export const useRoute = (isAuth) => {
     >
       <MainTab.Screen
         options={{
-          title: "Публікації",
+          headerTitle: "Публікації",
           headerRight: () => (
-            <Feather
+              <Feather
               onPress={() => alert("This is a button!")}
               name="log-out"
               size={28}
@@ -82,7 +84,7 @@ export const useRoute = (isAuth) => {
             />
           ),
         }}
-        name="Home"
+        name="MapScreen"
         component={MapScreen}
       />
       <MainTab.Screen
