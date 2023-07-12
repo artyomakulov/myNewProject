@@ -4,8 +4,8 @@ import { Button, StyleSheet, TouchableOpacity, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import RegistrationScreen from "./Screens/RegistrationScreen";
-import LoginScreen from "./Screens/LoginScreen";
+import RegistrationScreen from "./Screens/authScreen/RegistrationScreen";
+import LoginScreen from "./Screens/authScreen/LoginScreen";
 // import Home from "./Screens/mainScreen/Home";
 import CreatePostScreen from "./Screens/mainScreen/CreatePostsScreen";
 import MapScreen from "./Screens/mainScreen/MapScreen";

@@ -61,7 +61,7 @@ export default function LoginScreen() {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require("../assets/images/PhotoBG.jpg")}
+          source={require("../../assets/images/PhotoBG.jpg")}
         />
         <View
           style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -230 }}

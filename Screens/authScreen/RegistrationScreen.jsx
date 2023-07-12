@@ -62,7 +62,7 @@ export default function RegistrationScreen() {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require("../assets/images/PhotoBG.jpg")}
+          source={require("../../assets/images/PhotoBG.jpg")}
         />
         <View
           style={{ ...styles.form, marginBottom: !isShowKeyboard ? 0 : -160 }}
@@ -70,12 +70,12 @@ export default function RegistrationScreen() {
           <View style={styles.avatarContainer}>
             <Image
               style={styles.avatar}
-              source={require("../assets/images/avatar.jpg")}
+              source={require("../../assets/images/avatar.jpg")}
             />
             <TouchableOpacity>
               <Image
                 style={styles.avatarButton}
-                source={require("../assets/images/add.jpg")}
+                source={require("../../assets/images/add.jpg")}
               />
             </TouchableOpacity>
           </View>
