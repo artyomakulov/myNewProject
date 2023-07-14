@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   postTitle: {
     height: 50,
-    color: "#BDBDBD",
+    // color: "#BDBDBD",
     width: "80%",
     alignSelf: "center",
     borderBottomColor: "#E8E8E8",
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   postLocation: {
     height: 50,
-    color: "#BDBDBD",
+    // color: "#BDBDBD",
     width: "80%",
     alignSelf: "center",
     marginTop: 16,

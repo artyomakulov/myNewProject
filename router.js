@@ -19,7 +19,6 @@ import { useNavigation } from "@react-navigation/native";
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 
-
 export const useRoute = (isAuth) => {
   if (!isAuth) {
     return (
@@ -54,7 +53,7 @@ export const useRoute = (isAuth) => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: "white",
-        tabBarInactiveTintColor:"black",
+        tabBarInactiveTintColor: "black",
         headerTitleAlign: "center",
       }}
     >
@@ -62,7 +61,7 @@ export const useRoute = (isAuth) => {
         options={{
           headerTitle: "Публікації",
           headerRight: () => (
-              <Feather
+            <Feather
               onPress={() => alert("This is a button!")}
               name="log-out"
               size={28}
@@ -80,6 +79,7 @@ export const useRoute = (isAuth) => {
                 paddingVertical: 13,
                 paddingHorizontal: 30,
                 borderRadius: 25,
+                // marginLeft: 85,
               }}
             />
           ),
@@ -110,17 +110,17 @@ export const useRoute = (isAuth) => {
       <MainTab.Screen
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-              <Ionicons
-                name="person-outline"
-                size={24}
-                color={color}
-                backgroundColor={focused ? "#FF6C00" : "transparent"}
-                style={{
-                  paddingVertical: 13,
-                  paddingHorizontal: 30,
-                  borderRadius: 25,
-                }}
-              />
+            <Ionicons
+              name="person-outline"
+              size={24}
+              color={color}
+              backgroundColor={focused ? "#FF6C00" : "transparent"}
+              style={{
+                paddingVertical: 13,
+                paddingHorizontal: 30,
+                borderRadius: 25,
+              }}
+            />
           ),
         }}
         name="ProfileScreen"
